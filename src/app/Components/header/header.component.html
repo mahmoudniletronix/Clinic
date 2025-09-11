@@ -1,0 +1,45 @@
+<nav
+  id="mainHeader"
+  class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
+  [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'"
+>
+  <div
+    class="container-fluid d-flex align-items-center justify-content-between"
+  >
+    <!-- Logo -->
+    <a
+      class="navbar-brand"
+      routerLink="clinicTable"
+      [ngClass]="lang === 'ar' ? 'ms-auto' : 'me-auto'"
+    >
+      <img
+        src="https://farid-habib-hospital.com/wp-content/uploads/2022/06/FHH_F_LOGO.png"
+        alt="logo"
+        loading="lazy"
+        width="260"
+      />
+    </a>
+
+    <!-- Language Switch -->
+    <button
+      class="btn btn-outline-dark"
+      (click)="toggleLang()"
+      [ngClass]="lang === 'ar' ? 'me-auto' : 'ms-auto'"
+    >
+      {{ lang === "ar" ? "English" : "العربية" }}
+    </button>
+
+    <!-- Toggler -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>

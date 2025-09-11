@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <!-- زرار السويتش -->
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-primary" (click)="toggleLang()">
+      {{ lang === "ar" ? "English" : "العربية" }}
+    </button>
+  </div>
+
+  <!-- الجدول -->
+  <div class="table-container" id="tableContainer">
+    <table class="table table-bordered table-hover">
+      <thead id="tableHeader">
+        <tr>
+          <th>{{ lang === "ar" ? "العيادة" : "Clinic" }}</th>
+          <th>{{ lang === "ar" ? "التذكرة" : "Code" }}</th>
+          <th>{{ lang === "ar" ? "اسم الطبيب" : "Doctor" }}</th>
+          <th>{{ lang === "ar" ? "الشباك" : "Window" }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of clinics">
+          <td>
+            {{
+              lang === "ar"
+                ? item.ServiceParentNameAr
+                : item.ServiceParentNameEn
+            }}
+          </td>
+          <td>{{ item.TicketNumber }}</td>
+          <td class="doctor-name">
+            {{ lang === "ar" ? item.ServiceNameAr : item.ServiceNameEn }}
+          </td>
+          <td>{{ item.WindowNumber }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+/* ====== Layout Containers ====== */
+.container {
+}
+
+.table-container {
+  width: 100%;
+  max-width: 1237px;
+  max-height: 450px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  margin: 10rem auto 0;
+  background: #fff;
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+  min-width: 950px;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+thead th {
+  background-color: #38598e;
+  color: #fff;
+  padding: 1rem;
+  text-align: right;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.5px;
+}
+
+thead th:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  text-align: right;
+  background: #fff;
+  transition: background 0.2s ease;
+}
+
+tr:nth-child(even) td {
+  background: #f5f7fa;
+}
+
+tr:hover td {
+  background: #eef4ff;
+}
+
+.doctor-name {
+  font-weight: bold;
+  color: #222222;
+}
+
+/* ====== Footer ====== */
+.footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .container {
+    border-radius: 0;
+    margin-top: 6rem;
+    padding: 0.5rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+}
