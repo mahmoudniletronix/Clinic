@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LangService } from '../../Services/lang.service';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   lang: 'ar' | 'en' = 'ar';
 
-  toggleLang() {
-    this.lang = this.lang === 'ar' ? 'en' : 'ar';
-    document.documentElement.dir = this.lang === 'ar' ? 'rtl' : 'ltr';
+  constructor(private langService: LangService) {}
+
+  ngOnInit() {
+    this.langService.lang$.subscribe((val) => (this.lang = val));
   }
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  toggleLang() {
+    this.langService.toggleLang();
+  }
 }

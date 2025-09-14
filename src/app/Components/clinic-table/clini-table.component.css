@@ -1,32 +1,45 @@
-/* ====== Layout Containers ====== */
-.container {
+.clinic-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 7rem 1rem;
+  box-sizing: border-box;
 }
 
 .table-container {
   width: 100%;
-  max-width: 1237px;
-  max-height: 450px;
-  overflow-y: auto;
-  overflow-x: auto;
+  max-width: 1000px;
   border-radius: 8px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  margin: 10rem auto 0;
   background: #fff;
   padding: 1rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.table.table-bordered {
+  border: none !important;
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+  border: none !important;
 }
 
 table {
   width: 100%;
-  min-width: 950px;
-  border-collapse: collapse;
   font-size: 1rem;
+  min-width: 700px;
 }
 
+/* ====== THEAD ====== */
 thead th {
   background-color: #38598e;
   color: #fff;
   padding: 1rem;
-  text-align: right;
+  text-align: center;
   font-weight: 600;
   position: sticky;
   top: 0;
@@ -45,10 +58,11 @@ thead th:not(:first-child)::before {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* ====== BODY ====== */
 td {
   padding: 1rem;
-  border-bottom: 1px solid #eaeaea;
-  text-align: right;
+  /* border-bottom: 1px solid #eaeaea; */
+  text-align: center;
   background: #fff;
   transition: background 0.2s ease;
 }
@@ -66,33 +80,269 @@ tr:hover td {
   color: #222222;
 }
 
-/* ====== Footer ====== */
-.footer {
-  margin-top: 2rem;
-  text-align: center;
-  color: #7f8c8d;
-  font-size: 0.9rem;
-}
-
 /* ====== Responsive ====== */
-@media (max-width: 768px) {
-  .container {
-    border-radius: 0;
-    margin-top: 6rem;
-    padding: 0.5rem;
+@media (max-width: 992px) {
+  .table-container {
+    max-width: 100%;
+    margin: 7rem 1rem 0;
+    padding: 0.75rem;
   }
 
-  th,
+  table {
+    font-size: 0.95rem;
+    min-width: 600px;
+  }
+
+  thead th,
   td {
     padding: 0.75rem 0.5rem;
     font-size: 0.9rem;
   }
+}
 
-  .header h1 {
-    font-size: 1.5rem;
+/* ====== Tablet Screens (768px and below) ====== */
+@media (max-width: 768px) {
+  .table-container {
+    margin: 6rem 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    max-height: 450px;
   }
 
-  .header p {
-    font-size: 1rem;
+  table {
+    min-width: 100%;
+    font-size: 0.9rem;
   }
+
+  thead th {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  td {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .clinic-name {
+    font-size: 0.9rem;
+  }
+
+  .clinic-name small {
+    font-size: 0.75rem;
+  }
+
+  .ticket-number .badge {
+    font-size: 0.6rem;
+    padding: 0.35em 0.7em;
+  }
+
+  .doctor-name {
+    font-size: 0.85rem;
+  }
+
+  .window-number {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-container {
+    margin: 5rem 0.25rem 0;
+    padding: 0.375rem;
+    max-height: 400px;
+  }
+
+  table {
+    font-size: 0.6rem;
+  }
+
+  thead th {
+    padding: 0.6rem 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  td {
+    padding: 0.6rem 0.375rem;
+    font-size: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .clinic-name {
+    font-size: 0.6rem;
+  }
+  .doctor {
+    font-size: 0.7 !important;
+  }
+
+  .clinic-name small {
+    font-size: 0.7rem;
+    margin-top: 0.125rem;
+  }
+
+  .ticket-number .badge {
+    font-size: 0.7rem !important;
+    padding: 0.3em 0.6em;
+  }
+
+  .doctor-name {
+    font-size: 0.6rem;
+  }
+
+  .doctor-name::before {
+    display: none;
+  }
+
+  .window-number {
+    font-size: 0.6rem;
+  }
+}
+
+/* ====== Small Mobile (480px and below) ====== */
+@media (max-width: 480px) {
+  .table-container {
+    margin: 4rem 0.125rem 0;
+    padding: 0.25rem;
+    max-height: 350px;
+  }
+
+  table {
+    font-size: 0.75rem;
+  }
+
+  thead th {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  td {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .clinic-name {
+    font-size: 0.75rem;
+  }
+
+  .clinic-name small {
+    font-size: 0.65rem;
+    margin-top: 0.1rem;
+  }
+
+  .ticket-number .badge {
+    font-size: 0.7rem;
+    padding: 0.25em 0.5em;
+  }
+
+  .doctor-name {
+    font-size: 0.75rem;
+  }
+
+  .window-number {
+    font-size: 0.75rem;
+  }
+}
+
+/* ====== Extra Small Mobile (375px and below) ====== */
+@media (max-width: 375px) {
+  .table-container {
+    margin: 3rem 0.1rem 0;
+    padding: 0.2rem;
+    max-height: 300px;
+  }
+
+  table {
+    font-size: 0.7rem;
+  }
+
+  thead th {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  td {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.7rem;
+    line-height: 1.1;
+  }
+
+  .clinic-name {
+    font-size: 0.7rem;
+  }
+
+  .clinic-name small {
+    font-size: 0.6rem;
+    margin-top: 0.05rem;
+  }
+
+  .ticket-number .badge {
+    font-size: 0.65rem;
+    padding: 0.2em 0.4em;
+  }
+
+  .doctor-name {
+    font-size: 0.7rem;
+  }
+
+  .window-number {
+    font-size: 0.7rem;
+  }
+}
+.doctor-col {
+  line-height: 1.4;
+}
+
+.doctor-col .fw-bold {
+  /* font-size: 1rem; */
+  color: #007b8f;
+}
+
+.doctor-col .text-muted {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.ticket-number .badge {
+  font-size: 0.95rem;
+  padding: 0.4em 0.8em;
+  /* background: #f1f1f1; */
+  border-radius: 0.4rem;
+}
+.last-update {
+  margin: 4rem 0;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  color: #444;
+  text-align: center;
+  opacity: 0.85;
+}
+.last-update-label {
+  color: #38598e;
+  font-weight: bolder;
+}
+
+.last-update-time {
+  color: #22211f;
+  font-weight: 500;
+  margin-inline-start: 0.5rem;
+  font-size: 1.2rem;
+
+  margin-inline-start: 0.5rem;
+}
+[dir="ltr"] .last-update {
+  text-align: left;
+}
+
+[dir="rtl"] .last-update {
+  text-align: right;
 }

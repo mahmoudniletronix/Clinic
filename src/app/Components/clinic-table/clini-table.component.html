@@ -1,38 +1,65 @@
-<div class="container mt-4">
-  <!-- زرار السويتش -->
-  <div class="d-flex justify-content-end mb-3">
-    <button class="btn btn-primary" (click)="toggleLang()">
-      {{ lang === "ar" ? "English" : "العربية" }}
-    </button>
-  </div>
+<div class="clinic-container">
+  <!-- <div class="last-update" [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
+    <span class="last-update-label">
+      {{ lang === "ar" ? "آخر تحديث : " : "Last Update : " }}
+    </span>
+    <span class="last-update-time">
+      {{ lastUpdate | date : "yyyy/MM/dd hh:mm a" }}
+    </span>
+  </div> -->
 
-  <!-- الجدول -->
-  <div class="table-container" id="tableContainer">
-    <table class="table table-bordered table-hover">
-      <thead id="tableHeader">
+  <div class="table-container" id="tableContainer" [class.loading]="isLoading">
+    <table class="table table-hover" [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
+      <thead [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'" id="tableHeader">
         <tr>
+          <th class="text-end">
+            {{ lang === "ar" ? "اسم الطبيب" : "Doctor" }}
+          </th>
+          <th>{{ lang === "ar" ? "التذكرة" : "Ticket" }}</th>
           <th>{{ lang === "ar" ? "العيادة" : "Clinic" }}</th>
-          <th>{{ lang === "ar" ? "التذكرة" : "Code" }}</th>
-          <th>{{ lang === "ar" ? "اسم الطبيب" : "Doctor" }}</th>
-          <th>{{ lang === "ar" ? "الشباك" : "Window" }}</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of clinics">
-          <td>
-            {{
-              lang === "ar"
-                ? item.ServiceParentNameAr
-                : item.ServiceParentNameEn
-            }}
+
+      <tbody [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
+        <tr *ngFor="let item of clinics; trackBy: trackByTicketNumber">
+          <td class="doctor-col text-end">
+            <div class="fw-bold text-primary">
+              {{
+                lang === "ar"
+                  ? item.ServiceParentNameAr
+                  : item.ServiceParentNameEn
+              }}
+            </div>
+            <div class="text-muted small doctor">
+              {{ lang === "ar" ? item.ServiceNameAr : item.ServiceNameEn }}
+            </div>
           </td>
-          <td>{{ item.TicketNumber }}</td>
-          <td class="doctor-name">
-            {{ lang === "ar" ? item.ServiceNameAr : item.ServiceNameEn }}
+
+          <td class="ticket-number">
+            <span class="badge text-dark fs-6">{{ item.TicketNumber }}</span>
           </td>
-          <td>{{ item.WindowNumber }}</td>
+
+          <td class="clinic-col">
+            {{ lang === "ar" ? item.ClinicNameAr : item.ClinicNameEn }}
+          </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="!isLoading && clinics.length === 0">
+      <div class="empty-icon">📋</div>
+      <h3>{{ lang === "ar" ? "لا توجد بيانات" : "No Data Available" }}</h3>
+      <p>
+        {{
+          lang === "ar"
+            ? "لم يتم العثور على أي بيانات للعيادات"
+            : "No clinic data found"
+        }}
+      </p>
+      <button class="btn btn-primary" (click)="refreshData()">
+        {{ lang === "ar" ? "إعادة المحاولة" : "Retry" }}
+      </button>
+    </div>
   </div>
 </div>

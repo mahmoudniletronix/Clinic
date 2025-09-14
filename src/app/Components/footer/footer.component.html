@@ -1,0 +1,51 @@
+<footer class="custom-footer" [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
+  <div class="container">
+    <div class="row align-items-center">
+      <div
+        class="col-md-10 col-12 mb-3 mb-md-0"
+        [ngClass]="lang === 'ar' ? 'text-end' : 'text-start'"
+      >
+        <div class="footer-text">
+          <h3>
+            {{ lang === "ar" ? "مستشفى فريد حبيب" : "Farid Habib Hospital" }}
+          </h3>
+          <p>
+            {{
+              lang === "ar"
+                ? "نحن نقدم الرعاية الصحية على أعلى مستوى من الجودة والأمان فى مصر . وتشتهر المستشفى بأقسام جراحة القلب والصدر، وأمراض القلب، وعلاج أمراض الأوعية الدموية، الأورام، زراعة الأعضاء، و جراحة العظام. وقد استطاعت مستشفى فريد حبيب أن تجذب أفضل الخبرات فى الطب والإدارة من أكثر المؤسسات الطبية تميزاً محلياً وعالمياً."
+                : "We provide the highest quality and safest healthcare in Egypt. The hospital is renowned for its departments of cardiothoracic surgery, cardiology, vascular surgery, oncology, organ transplantation, and orthopedics. Farid Habib Hospital has attracted the best medical and administrative expertise from some of the most distinguished medical institutions locally and internationally."
+            }}
+          </p>
+          <p class="highlight">
+            {{
+              lang === "ar"
+                ? "ويقدم أطباؤنا وموظفونا المرموقون لمرضانا العناية الطبية والجراحية النادرة لتدعيم أعلى مستويات الصحة والراحة."
+                : "Our distinguished physicians and staff provide our patients with exceptional medical and surgical care to promote the highest levels of health and comfort."
+            }}
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-2 col-12 text-center">
+        <div class="footer-logo">
+          <img
+            src="https://farid-habib-hospital.com/wp-content/uploads/2022/06/cropped-39876112_1830771557006107_964325157017485312_n-min-160x160.jpg"
+            alt="Hospital Logo"
+            loading="lazy"
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom text-center mt-3">
+      <span>
+        {{
+          lang === "ar"
+            ? "© 2025 مستشفى فريد حبيب. جميع الحقوق محفوظة."
+            : "© 2025 Farid Habib Hospital. All rights reserved."
+        }}
+      </span>
+    </div>
+  </div>
+</footer>

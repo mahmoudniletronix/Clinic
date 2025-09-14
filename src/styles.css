@@ -1,9 +1,20 @@
+html,
 body {
-  /* background: linear-gradient(135deg, #6c7f9e 0%, #bdd3f9 100%) !important; */
-  min-height: 100vh;
+  height: 100%;
+  margin: 0;
+}
+
+app-root {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  color: #333;
+  min-height: 100vh;
+}
+
+app-clini-table {
+  flex: 1;
+}
+
+app-footer {
+  margin-top: auto;
+  width: 100%;
 }
