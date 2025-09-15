@@ -177,7 +177,7 @@ tr:hover td {
     font-size: 0.6rem;
   }
   .doctor {
-    font-size: 0.7 !important;
+    font-size: 0.7rem !important;
   }
 
   .clinic-name small {
@@ -317,6 +317,25 @@ tr:hover td {
   padding: 0.4em 0.8em;
   /* background: #f1f1f1; */
   border-radius: 0.4rem;
+}
+
+/* Add missing clinic column styles to match template */
+.clinic-col {
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .clinic-col {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .clinic-col {
+    font-size: 0.7rem;
+  }
 }
 .last-update {
   margin: 4rem 0;
