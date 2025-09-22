@@ -13,6 +13,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.langService.lang$.subscribe((val) => (this.lang = val));
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 30) {
+        header?.classList.add('scrolled');
+      } else {
+        header?.classList.remove('scrolled');
+      }
+    });
   }
 
   toggleLang() {

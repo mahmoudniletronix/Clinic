@@ -1,59 +1,72 @@
 <div class="clinic-container">
-  <!-- <div class="last-update" [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
+  <!-- Last Update -->
+  <div class="last-update" [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
     <span class="last-update-label">
-      {{ lang === "ar" ? "آخر تحديث : " : "Last Update : " }}
+      {{ lang === "ar" ? "آخر تحديث :" : "Last Update :" }}
     </span>
     <span class="last-update-time">
-      {{ lastUpdate | date : "yyyy/MM/dd hh:mm a" }}
+      {{
+        lastUpdate
+          | date : (lang === "ar" ? "yyyy/MM/dd hh:mm a" : "MM/dd/yyyy hh:mm a")
+      }}
     </span>
-  </div> -->
+  </div>
 
-  <div class="table-container" id="tableContainer" [class.loading]="isLoading">
-    <table class="table table-hover" [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
-      <thead [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'" id="tableHeader">
+  <!-- Table -->
+  <div class="table-container" id="tableContainer">
+    <table class="table" [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
+      <thead>
         <tr>
-          <th class="text-end">
-            {{ lang === "ar" ? "اسم الطبيب" : "Doctor" }}
+          <th
+            [ngClass]="{
+              'text-end': lang === 'en',
+              'text-start': lang === 'ar'
+            }"
+          >
+            {{ lang === "ar" ? "الطبيب" : "Doctor" }}
           </th>
           <th>{{ lang === "ar" ? "التذكرة" : "Ticket" }}</th>
           <th>{{ lang === "ar" ? "العيادة" : "Clinic" }}</th>
         </tr>
       </thead>
 
-      <tbody [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
-        <tr *ngFor="let item of clinics; trackBy: trackByTicketNumber">
-          <td class="doctor-col text-end">
+      <tbody>
+        <tr *ngFor="let clinic of clinics; trackBy: trackByTicketNumber">
+          <td
+            [ngClass]="{
+              'text-end': lang === 'en',
+              'text-start': lang === 'ar'
+            }"
+          >
             <div class="fw-bold text-primary">
-              {{
-                lang === "ar"
-                  ? item.ServiceParentNameAr
-                  : item.ServiceParentNameEn
-              }}
+              {{ lang === "ar" ? clinic.ServiceNameAr : clinic.ServiceNameEn }}
             </div>
             <div class="text-muted small doctor">
-              {{ lang === "ar" ? item.ServiceNameAr : item.ServiceNameEn }}
+              {{
+                lang === "ar"
+                  ? clinic.ServiceParentNameAr
+                  : clinic.ServiceParentNameEn
+              }}
             </div>
           </td>
-
           <td class="ticket-number">
-            <span class="badge text-dark fs-6">{{ item.TicketNumber }}</span>
+            <span class="badge text-dark fs-6">{{ clinic.TicketNumber }}</span>
           </td>
-
           <td class="clinic-col">
-            {{ lang === "ar" ? item.ClinicNameAr : item.ClinicNameEn }}
+            {{ lang === "ar" ? clinic.ClinicNameAr : clinic.ClinicNameEn }}
           </td>
         </tr>
       </tbody>
     </table>
 
     <!-- Empty State -->
-    <div class="empty-state" *ngIf="!isLoading && clinics.length === 0">
+    <div class="empty-state" *ngIf="clinics.length === 0">
       <div class="empty-icon">📋</div>
       <h3>{{ lang === "ar" ? "لا توجد بيانات" : "No Data Available" }}</h3>
       <p>
         {{
           lang === "ar"
-            ? "لم يتم العثور على أي بيانات للعيادات"
+            ? "لم يتم العثور على بيانات للعيادات"
             : "No clinic data found"
         }}
       </p>
