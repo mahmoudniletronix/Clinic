@@ -466,3 +466,8 @@ tr:hover td {
 .table th.ticket-number {
   text-align: center !important;
 }
+@media (max-width: 480px) {
+  .last-update-time {
+    font-size: 0.7rem !important;
+  }
+}

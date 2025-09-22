@@ -1,11 +1,10 @@
-/* Navbar Base */
+/* ===== Base Navbar ===== */
 #mainHeader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1050;
-
   background: linear-gradient(
     135deg,
     rgba(136, 147, 158, 0.2) 0%,
@@ -13,19 +12,18 @@
   );
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Content wrapper */
 #mainHeader .nav-content {
-  padding: 0.8rem 1.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.8rem 1.8rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* Logo */
@@ -47,11 +45,9 @@
   font-size: 0.95rem;
   border: none;
   cursor: pointer;
-
   background: rgba(48, 117, 187, 0.9);
   color: #fff;
   box-shadow: 0 4px 12px rgba(48, 117, 187, 0.3);
-
   transition: all 0.35s ease;
 }
 
@@ -61,7 +57,67 @@
   box-shadow: 0 6px 16px rgba(56, 89, 142, 0.4);
 }
 
-/* Scroll Effect - Updated with Gradient */
+/* ===== Hamburger Menu ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.hamburger span {
+  width: 2rem;
+  height: 2px;
+  background: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* ===== Scroll Effect ===== */
 .scrolled#mainHeader {
   background: linear-gradient(
     135deg,
@@ -77,7 +133,6 @@
 /* Responsive Design */
 /* ========================= */
 
-/* Tablet */
 @media (max-width: 992px) {
   #mainHeader .nav-content {
     padding: 0.6rem 1.2rem;
@@ -91,13 +146,47 @@
     padding: 0.45rem 1rem;
     font-size: 0.9rem;
   }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(48, 117, 187, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 1rem;
+  }
+
+  .nav-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .nav-link {
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+  }
 }
 
-/* Mobile */
 @media (max-width: 576px) {
   #mainHeader .nav-content {
-    flex-direction: row;
-    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    flex-wrap: nowrap;
   }
 
   #mainHeader .navbar-brand img {
@@ -107,5 +196,21 @@
   #mainHeader .lang-btn {
     padding: 0.4rem 0.9rem;
     font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .nav-menu {
+    padding: 1.2rem 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
   }
 }
