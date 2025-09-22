@@ -452,3 +452,17 @@ tr:hover td {
   border-top-left-radius: 12px;
   border-top-right-radius: 0;
 }
+[dir="ltr"] th,
+[dir="ltr"] td {
+  text-align: start;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+  text-align: start;
+}
+
+.table td.ticket-number,
+.table th.ticket-number {
+  text-align: center !important;
+}

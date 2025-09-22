@@ -17,27 +17,17 @@
     <table class="table" [attr.dir]="lang === 'ar' ? 'rtl' : 'ltr'">
       <thead>
         <tr>
-          <th
-            [ngClass]="{
-              'text-end': lang === 'en',
-              'text-start': lang === 'ar'
-            }"
-          >
-            {{ lang === "ar" ? "الطبيب" : "Doctor" }}
+          <th>{{ lang === "ar" ? "الطبيب" : "Doctor" }}</th>
+          <th class="ticket-number">
+            {{ lang === "ar" ? "التذكرة" : "Ticket" }}
           </th>
-          <th>{{ lang === "ar" ? "التذكرة" : "Ticket" }}</th>
           <th>{{ lang === "ar" ? "العيادة" : "Clinic" }}</th>
         </tr>
       </thead>
 
       <tbody>
         <tr *ngFor="let clinic of clinics; trackBy: trackByTicketNumber">
-          <td
-            [ngClass]="{
-              'text-end': lang === 'en',
-              'text-start': lang === 'ar'
-            }"
-          >
+          <td>
             <div class="fw-bold text-primary">
               {{ lang === "ar" ? clinic.ServiceNameAr : clinic.ServiceNameEn }}
             </div>
